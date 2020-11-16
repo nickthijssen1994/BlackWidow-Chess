@@ -6,9 +6,9 @@ import java.net.Socket;
 
 public class Client extends NetworkEntity {
 
-	private String hostName;
+	private final String hostName;
 
-	private int serverPort;
+	private final int serverPort;
 
 	public Client(final String host, final int port) {
 		super("CLIENT");

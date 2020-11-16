@@ -245,7 +245,7 @@ public abstract class Move {
 
 		@Override
 		public String toString() {
-			return BoardUtils.INSTANCE.getPositionAtCoordinate(this.movedPiece.getPiecePosition()).substring(0, 1) +
+			return BoardUtils.INSTANCE.getPositionAtCoordinate(this.movedPiece.getPiecePosition()).charAt(0) +
 					"x" + BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
 		}
 

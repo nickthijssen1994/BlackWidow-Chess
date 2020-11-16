@@ -15,7 +15,7 @@ class GameSetup extends JDialog {
 	private static final String COMPUTER_TEXT = "Computer";
 	private PlayerType whitePlayerType;
 	private PlayerType blackPlayerType;
-	private JSpinner searchDepthSpinner;
+	private final JSpinner searchDepthSpinner;
 
 	GameSetup(final JFrame frame, final boolean modal) {
 		super(frame, modal);

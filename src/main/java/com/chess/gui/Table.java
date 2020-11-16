@@ -741,7 +741,7 @@ public final class Table extends Observable {
 			if (board.getPiece(this.tileId) != null) {
 				try {
 					final BufferedImage image =
-							ImageIO.read(new File(pieceIconPath + board.getPiece(this.tileId).getPieceAllegiance().toString().substring(0, 1) + "" + board.getPiece(this.tileId).toString() + ".gif"));
+							ImageIO.read(new File(pieceIconPath + board.getPiece(this.tileId).getPieceAllegiance().toString().charAt(0) + "" + board.getPiece(this.tileId).toString() + ".gif"));
 					add(new JLabel(new ImageIcon(image)));
 				} catch (final IOException e) {
 					e.printStackTrace();

@@ -236,8 +236,7 @@ public class TestAlphaBeta {
 	@Test
 	public void blackWidowLoss1() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w " + "kq" + " " +
-						"-" + " 0 13");
+				FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w " + "kq" + " " + "-" + " 0 13");
 		final MoveStrategy alphaBeta = new StockAlphaBeta(6);
 		final Move bestMove = alphaBeta.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("c3"),

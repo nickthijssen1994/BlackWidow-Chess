@@ -102,8 +102,7 @@ public class TestEngine {
 	@Test
 	public void testPosition4Depth1() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " +
-						"-" + " 0 1");
+				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " + "-" + " 0 1");
 		final MoveStrategy minMax = new MiniMax(1);
 		minMax.execute(board);
 		assertEquals(minMax.getNumBoardsEvaluated(), 6L);
@@ -112,8 +111,7 @@ public class TestEngine {
 	@Test
 	public void testPosition4Depth2() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " +
-						"-" + " 0 1");
+				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " + "-" + " 0 1");
 		final MoveStrategy minMax = new MiniMax(2);
 		minMax.execute(board);
 		assertEquals(minMax.getNumBoardsEvaluated(), 264L);
@@ -122,8 +120,7 @@ public class TestEngine {
 	@Test
 	public void testPosition4Depth3() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " +
-						"-" + " 0 1");
+				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " + "-" + " 0 1");
 		final MoveStrategy minMax = new MiniMax(3);
 		minMax.execute(board);
 		assertEquals(minMax.getNumBoardsEvaluated(), 9467L);
@@ -132,8 +129,7 @@ public class TestEngine {
 	@Test
 	public void testPosition4Depth4() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " +
-						"-" + " 0 1");
+				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " + "-" + " 0 1");
 		final MoveStrategy minMax = new MiniMax(4);
 		minMax.execute(board);
 		assertEquals(minMax.getNumBoardsEvaluated(), 422333L);
@@ -142,8 +138,7 @@ public class TestEngine {
 	@Test
 	public void testPosition4Depth5() {
 		final Board board =
-				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " +
-						"-" + " 0 1");
+				FenUtilities.createGameFromFEN("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w " + "kq" + " " + "-" + " 0 1");
 		final MoveStrategy minMax = new MiniMax(5);
 		minMax.execute(board);
 		assertEquals(minMax.getNumBoardsEvaluated(), 15833292L);

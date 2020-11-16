@@ -14,7 +14,7 @@ public class MySqlGamePersistence implements PGNPersistence {
 	private static final String PASS = "powerpc123";
 	private static final String NEXT_BEST_MOVE_QUERY = "SELECT SUBSTR(g1.moves, LENGTH('%s') + %d, INSTR(SUBSTR(g1" +
 			".moves, LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1), " + "COUNT(*) FROM game g1 WHERE g1.moves LIKE " + "'%s%%' AND (outcome = '%s') GROUP BY substr(g1.moves, LENGTH('%s') + %d, " + "INSTR(substr(g1.moves, " + "LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1) ORDER BY 2 DESC";
-	private static MySqlGamePersistence INSTANCE = new MySqlGamePersistence();
+	private static final MySqlGamePersistence INSTANCE = new MySqlGamePersistence();
 	private final Connection dbConnection;
 
 	private MySqlGamePersistence() {
