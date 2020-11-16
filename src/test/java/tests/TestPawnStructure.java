@@ -23,8 +23,9 @@ public class TestPawnStructure {
 
 	@Test
 	public void testIsolatedPawnByExample1() {
-		final Board board = FenUtilities.createGameFromFEN("r1bq1rk1/pp2bppp/1np2n2/6B1/3P4/1BNQ4/PP2NPPP/R3R1K1 b - " +
-				"-" + " 0 13");
+		final Board board =
+				FenUtilities.createGameFromFEN("r1bq1rk1/pp2bppp/1np2n2/6B1/3P4/1BNQ4/PP2NPPP/R3R1K1 b - " + "-" + " " +
+						"0" + " 13");
 		assertEquals(PawnStructureAnalyzer.get().isolatedPawnPenalty(board.whitePlayer()),
 				PawnStructureAnalyzer.ISOLATED_PAWN_PENALTY);
 		assertEquals(PawnStructureAnalyzer.get().isolatedPawnPenalty(board.blackPlayer()), 0);
