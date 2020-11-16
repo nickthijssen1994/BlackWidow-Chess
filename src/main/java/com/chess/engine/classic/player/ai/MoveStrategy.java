@@ -5,8 +5,8 @@ import com.chess.engine.classic.board.Move;
 
 public interface MoveStrategy {
 
-    long getNumBoardsEvaluated();
+	long getNumBoardsEvaluated();
 
-    Move execute(Board board);
+	Move execute(Board board);
 
 }
