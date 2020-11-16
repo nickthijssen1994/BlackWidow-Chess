@@ -47,13 +47,13 @@ public final class Table extends Observable {
     private Color darkTileColor = Color.decode("#593E1A");
 
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(600, 600);
-    private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 350);
+    private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 400);
     private static final Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
 
     private static final Table INSTANCE = new Table();
 
     private Table() {
-        this.gameFrame = new JFrame("BlackWidow");
+        this.gameFrame = new JFrame("Chess");
         final JMenuBar tableMenuBar = new JMenuBar();
         populateMenuBar(tableMenuBar);
         this.gameFrame.setJMenuBar(tableMenuBar);
@@ -314,7 +314,7 @@ public final class Table extends Observable {
         });
 
         holyWarriorsMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/holywarriors/";
+            pieceIconPath = "src/main/resources/art/holywarriors/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
@@ -322,17 +322,17 @@ public final class Table extends Observable {
         });
 
         abstractMenMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/simple/";
+            pieceIconPath = "src/main/resources/art/simple/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
         fancyMenMenuItem2.addActionListener(e -> {
-            pieceIconPath = "art/fancy2/";
+            pieceIconPath = "src/main/resources/art/fancy2/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
         fancyMenMenuItem.addActionListener(e -> {
-            pieceIconPath = "art/fancy/";
+            pieceIconPath = "src/main/resources/art/fancy/";
             Table.get().getBoardPanel().drawBoard(chessBoard);
         });
 
