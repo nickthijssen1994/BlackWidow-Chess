@@ -169,8 +169,8 @@ public class TestMiniMax {
 
 	@Test
 	public void testKiwiPeteDepth2Bug2() {
-		final Board board = FenUtilities.createGameFromFEN("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w " +
-				"KQkq -");
+		final Board board = FenUtilities.createGameFromFEN("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w "
+				+ "KQkq -");
 		final MoveTransition t1 = board.currentPlayer().makeMove(Move.MoveFactory.createMove(board,
 				BoardUtils.INSTANCE.getCoordinateAtPosition("e5"), BoardUtils.INSTANCE.getCoordinateAtPosition("d7")));
 		final MoveStrategy minMax = new MiniMax(1);
@@ -180,8 +180,8 @@ public class TestMiniMax {
 
 	@Test
 	public void testChessDotComGame() {
-		final Board board = FenUtilities.createGameFromFEN("rnbk1bnr/1pN2ppp/p7/3P2q1/3Pp3/8/PPP1QPPP/RN2KB1R w KQ - " +
-				"18 10");
+		final Board board =
+				FenUtilities.createGameFromFEN("rnbk1bnr/1pN2ppp/p7/3P2q1/3Pp3/8/PPP1QPPP/RN2KB1R w KQ - " + "18 10");
 		final MoveStrategy minMax = new MiniMax(4);
 		minMax.execute(board);
 	}

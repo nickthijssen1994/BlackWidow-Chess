@@ -137,8 +137,8 @@ public class TestIterativeDeepening {
 
 	@Test
 	public void testQualityTwoDepth6() {
-		final Board board = FenUtilities.createGameFromFEN("6k1/3b3r/1p1p4/p1n2p2/1PPNpP1q/P3Q1p1/1R1RB1P1/5K2 b - - " +
-				"0-1");
+		final Board board =
+				FenUtilities.createGameFromFEN("6k1/3b3r/1p1p4/p1n2p2/1PPNpP1q/P3Q1p1/1R1RB1P1/5K2 b - - " + "0-1");
 		final MoveStrategy iterativeDeepening = new IterativeDeepening(6);
 		final Move bestMove = iterativeDeepening.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("h4"),
@@ -147,8 +147,8 @@ public class TestIterativeDeepening {
 
 	@Test
 	public void testQualityThreeDepth6() {
-		final Board board = FenUtilities.createGameFromFEN("r2r1n2/pp2bk2/2p1p2p/3q4/3PN1QP/2P3R1/P4PP1/5RK1 w - - 0 " +
-				"1");
+		final Board board =
+				FenUtilities.createGameFromFEN("r2r1n2/pp2bk2/2p1p2p/3q4/3PN1QP/2P3R1/P4PP1/5RK1 w - - 0 " + "1");
 		final MoveStrategy iterativeDeepening = new IterativeDeepening(7);
 		final Move bestMove = iterativeDeepening.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("g4"),
@@ -234,8 +234,8 @@ public class TestIterativeDeepening {
 
 	@Test
 	public void blackWidowLoss1() {
-		final Board board = FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w kq" +
-				" - 0 13");
+		final Board board = FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w " +
+				"kq" + " - 0 13");
 		final MoveStrategy iterativeDeepening = new IterativeDeepening(7);
 		final Move bestMove = iterativeDeepening.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("c3"),
@@ -244,8 +244,8 @@ public class TestIterativeDeepening {
 
 	@Test
 	public void blackWidowLossWithID() {
-		final Board board = FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w kq" +
-				" - 0 13");
+		final Board board = FenUtilities.createGameFromFEN("r2qkb1r/3p1pp1/p1n1p2p/1p1bP3/P2p4/1PP5/5PPP/RNBQNRK1 w " +
+				"kq" + " - 0 13");
 		final MoveStrategy iterativeDeepening = new IterativeDeepening(7);
 		final Move bestMove = iterativeDeepening.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("c3"),
@@ -347,8 +347,8 @@ public class TestIterativeDeepening {
 
 	@Test
 	public void testAutoResponseVsPrinChess() {
-		final Board board = FenUtilities.createGameFromFEN("r2q1rk1/p1p2pp1/3p1b2/2p2QNb/4PB1P/6R1/PPPR4/2K5 b - - 0 " +
-				"1");
+		final Board board =
+				FenUtilities.createGameFromFEN("r2q1rk1/p1p2pp1/3p1b2/2p2QNb/4PB1P/6R1/PPPR4/2K5 b - - 0 " + "1");
 		final MoveStrategy iterativeDeepening = new IterativeDeepening(6);
 		final Move bestMove = iterativeDeepening.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("h5"),

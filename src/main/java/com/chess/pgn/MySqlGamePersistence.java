@@ -13,9 +13,7 @@ public class MySqlGamePersistence implements PGNPersistence {
 	private static final String USER = "root";
 	private static final String PASS = "powerpc123";
 	private static final String NEXT_BEST_MOVE_QUERY = "SELECT SUBSTR(g1.moves, LENGTH('%s') + %d, INSTR(SUBSTR(g1" +
-			".moves, LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1), " + "COUNT(*) FROM game g1 WHERE g1.moves LIKE " +
-			"'%s%%' AND (outcome = '%s') GROUP BY substr(g1.moves, LENGTH('%s') + %d, " + "INSTR(substr(g1.moves, " +
-			"LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1) ORDER BY 2 DESC";
+			".moves, LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1), " + "COUNT(*) FROM game g1 WHERE g1.moves LIKE " + "'%s%%' AND (outcome = '%s') GROUP BY substr(g1.moves, LENGTH('%s') + %d, " + "INSTR(substr(g1.moves, " + "LENGTH('%s') + %d, LENGTH(g1.moves)), ',') - 1) ORDER BY 2 DESC";
 	private static MySqlGamePersistence INSTANCE = new MySqlGamePersistence();
 	private final Connection dbConnection;
 
@@ -78,8 +76,7 @@ public class MySqlGamePersistence implements PGNPersistence {
 	private void createGameTable() {
 		try {
 			final Statement statement = this.dbConnection.createStatement();
-			statement.execute("CREATE TABLE IF NOT EXISTS Game(id int primary key, outcome varchar(10), moves varchar" +
-					"(3072));");
+			statement.execute("CREATE TABLE IF NOT EXISTS Game(id int primary key, outcome varchar(10), moves varchar" + "(3072));");
 			statement.close();
 		} catch (final SQLException e) {
 			e.printStackTrace();

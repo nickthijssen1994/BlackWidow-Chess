@@ -86,10 +86,7 @@ public class IterativeDeepening extends Observable implements MoveStrategy {
 			currentDepth++;
 		}
 		this.executionTime = System.currentTimeMillis() - startTime;
-		System.out.printf("%s SELECTS %s [#boards evaluated = %d, time taken = %d ms, eval rate = %.1f cutoffCount = " +
-				"%d prune percent = %.2f\n", board.currentPlayer(), bestMove, this.boardsEvaluated, this.executionTime
-				, (1000 * ((double) this.boardsEvaluated / this.executionTime)), this.cutOffsProduced,
-				100 * ((double) this.cutOffsProduced / this.boardsEvaluated));
+		System.out.printf("%s SELECTS %s [#boards evaluated = %d, time taken = %d ms, eval rate = %.1f cutoffCount = " + "%d prune percent = %.2f\n", board.currentPlayer(), bestMove, this.boardsEvaluated, this.executionTime, (1000 * ((double) this.boardsEvaluated / this.executionTime)), this.cutOffsProduced, 100 * ((double) this.cutOffsProduced / this.boardsEvaluated));
 		return bestMove;
 	}
 

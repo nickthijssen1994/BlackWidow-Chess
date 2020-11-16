@@ -103,8 +103,7 @@ public class StockAlphaBeta extends Observable implements MoveStrategy {
 
 		final long executionTime = System.currentTimeMillis() - startTime;
 		final String result =
-				board.currentPlayer() + " SELECTS " + bestMove + " [#boards evaluated = " + this.boardsEvaluated + " " +
-						"time taken = " + executionTime / 1000 + " rate = " + (1000 * ((double) this.boardsEvaluated / executionTime));
+				board.currentPlayer() + " SELECTS " + bestMove + " [#boards evaluated = " + this.boardsEvaluated + " " + "time taken = " + executionTime / 1000 + " rate = " + (1000 * ((double) this.boardsEvaluated / executionTime));
 		System.out.printf("%s SELECTS %s [#boards evaluated = %d, time taken = %d ms, rate = %.1f\n",
 				board.currentPlayer(), bestMove, this.boardsEvaluated, executionTime,
 				(1000 * ((double) this.boardsEvaluated / executionTime)));

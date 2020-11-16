@@ -86,9 +86,8 @@ public class AlphaBetaWithMoveOrdering extends Observable implements MoveStrateg
 
 						+ quiescenceInfo + ", t: " + calculateTimeTaken(candidateMoveStartTime, System.nanoTime());
 			} else {
-				s =
-						"\t" + toString() + ", m: (" + moveCounter + "/" + numMoves + ") " + move + " is illegal, " +
-								"best: " + bestMove;
+				s = "\t" + toString() + ", m: (" + moveCounter + "/" + numMoves + ") " + move + " is illegal, " +
+						"best: " + bestMove;
 			}
 			System.out.println(s);
 			setChanged();
@@ -96,10 +95,7 @@ public class AlphaBetaWithMoveOrdering extends Observable implements MoveStrateg
 			moveCounter++;
 		}
 		this.executionTime = System.currentTimeMillis() - startTime;
-		System.out.printf("%s SELECTS %s [#boards evaluated = %d, time taken = %d ms, eval rate = %.1f cutoffCount = " +
-				"%d prune percent = %.2f\n", board.currentPlayer(), bestMove, this.boardsEvaluated, this.executionTime
-				, (1000 * ((double) this.boardsEvaluated / this.executionTime)), this.cutOffsProduced,
-				100 * ((double) this.cutOffsProduced / this.boardsEvaluated));
+		System.out.printf("%s SELECTS %s [#boards evaluated = %d, time taken = %d ms, eval rate = %.1f cutoffCount = " + "%d prune percent = %.2f\n", board.currentPlayer(), bestMove, this.boardsEvaluated, this.executionTime, (1000 * ((double) this.boardsEvaluated / this.executionTime)), this.cutOffsProduced, 100 * ((double) this.cutOffsProduced / this.boardsEvaluated));
 		return bestMove;
 	}
 

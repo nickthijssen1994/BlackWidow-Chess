@@ -796,8 +796,8 @@ public class TestCheckmate {
 
 	@Test
 	public void testMagnusBlackToMoveAndWinTest1() {
-		final Board board = FenUtilities.createGameFromFEN("2rr2k1/pb3pp1/4q2p/2pn4/2Q1P3/P4P2/1P3BPP/2KR2NR b - - 0 " +
-				"1");
+		final Board board =
+				FenUtilities.createGameFromFEN("2rr2k1/pb3pp1/4q2p/2pn4/2Q1P3/P4P2/1P3BPP/2KR2NR b - - 0 " + "1");
 		final MoveStrategy alphaBeta = new StockAlphaBeta(6);
 		final Move bestMove = alphaBeta.execute(board);
 		assertEquals(bestMove, Move.MoveFactory.createMove(board, BoardUtils.INSTANCE.getCoordinateAtPosition("d5"),

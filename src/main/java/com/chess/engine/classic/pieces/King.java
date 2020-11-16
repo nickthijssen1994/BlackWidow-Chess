@@ -93,6 +93,11 @@ public final class King extends Piece {
 	}
 
 	@Override
+	public int hashCode() {
+		return (31 * super.hashCode()) + (isCastled ? 1 : 0);
+	}
+
+	@Override
 	public boolean equals(final Object other) {
 		if (this == other) {
 			return true;
@@ -105,10 +110,5 @@ public final class King extends Piece {
 		}
 		final King king = (King) other;
 		return isCastled == king.isCastled;
-	}
-
-	@Override
-	public int hashCode() {
-		return (31 * super.hashCode()) + (isCastled ? 1 : 0);
 	}
 }
