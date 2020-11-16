@@ -62,7 +62,7 @@ public final class Table extends Observable {
         this.boardDirection = BoardDirection.NORMAL;
         this.highlightLegalMoves = false;
         this.useBook = false;
-        this.pieceIconPath = "art/holywarriors/";
+        this.pieceIconPath = "src/main/resources/art/simple/";
         this.gameHistoryPanel = new GameHistoryPanel();
         this.debugPanel = new DebugPanel();
         this.takenPiecesPanel = new TakenPiecesPanel();
