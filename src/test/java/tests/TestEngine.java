@@ -1,4 +1,4 @@
-package com.chess.tests;
+package tests;
 
 import com.chess.engine.classic.board.Board;
 import com.chess.engine.classic.player.ai.MiniMax;
