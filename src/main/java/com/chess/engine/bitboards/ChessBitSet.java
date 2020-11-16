@@ -1,4 +1,5 @@
 package com.chess.engine.bitboards;
+
 import java.util.BitSet;
 
 public final class ChessBitSet extends BitSet {
@@ -23,22 +24,22 @@ public final class ChessBitSet extends BitSet {
 		return BitSet.valueOf(words);
 	}
 
-    public BitSet shiftRight(BitSet bits, int n) {
-        long[] words = bits.toLongArray();
-        // Expand array if there will be carry bits
-        if (words[words.length - 1] >>> n > 0) {
-            long[] tmp = new long[words.length + 1];
-            System.arraycopy(words, 0, tmp, 0, words.length);
-            words = tmp;
-        }
-        // Do the shift
-        for (int i = words.length - 1; i > 0; i--) {
-            words[i] <<= n; // Shift current word
-            words[i] |= words[i - 1] >>> (64 - n); // Do the carry
-        }
-        words[0] <<= n; // shift [0] separately, since no carry
-        return BitSet.valueOf(words);
-    }
+	public BitSet shiftRight(BitSet bits, int n) {
+		long[] words = bits.toLongArray();
+		// Expand array if there will be carry bits
+		if (words[words.length - 1] >>> n > 0) {
+			long[] tmp = new long[words.length + 1];
+			System.arraycopy(words, 0, tmp, 0, words.length);
+			words = tmp;
+		}
+		// Do the shift
+		for (int i = words.length - 1; i > 0; i--) {
+			words[i] <<= n; // Shift current word
+			words[i] |= words[i - 1] >>> (64 - n); // Do the carry
+		}
+		words[0] <<= n; // shift [0] separately, since no carry
+		return BitSet.valueOf(words);
+	}
 
 	public ChessBitSet shift(final int shiftValue) {
 		final int len = length();

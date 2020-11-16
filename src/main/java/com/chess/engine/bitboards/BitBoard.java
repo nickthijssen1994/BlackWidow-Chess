@@ -1,71 +1,8 @@
 package com.chess.engine.bitboards;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class  BitBoard {
-
-	private static ChessBitSet whiteKnights;
-	private static ChessBitSet whiteBishops;
-	private static ChessBitSet whiteRooks;
-	private static ChessBitSet whiteQueens;
-	private static ChessBitSet whiteKing;
-	private static ChessBitSet whitePawns;
-
-	private static ChessBitSet blackKnights;
-	private static ChessBitSet blackBishops;
-	private static ChessBitSet blackRooks;
-	private static ChessBitSet blackQueens;
-	private static ChessBitSet blackKing;
-	private static ChessBitSet blackPawns;
-
-	private static ChessBitSet whiteLegalLocations;
-	private static ChessBitSet blackLegalLocations;
-
-	private final List<Move> boardLegalMoves;
-
-	private static final ChessBitSet FILE_A = new ChessBitSet();
-	private static final ChessBitSet FILE_B = new ChessBitSet();
-	private static final ChessBitSet FILE_C = new ChessBitSet();
-	private static final ChessBitSet FILE_D = new ChessBitSet();
-	private static final ChessBitSet FILE_E = new ChessBitSet();
-	private static final ChessBitSet FILE_F = new ChessBitSet();
-	private static final ChessBitSet FILE_G = new ChessBitSet();
-	private static final ChessBitSet FILE_H = new ChessBitSet();
-
-	private static Map<Integer, ChessBitSet> ALL_FILES = new HashMap<>();
-
-	private static final ChessBitSet RANK_1 = new ChessBitSet();
-	private static final ChessBitSet RANK_2 = new ChessBitSet();
-	private static final ChessBitSet RANK_3 = new ChessBitSet();
-	private static final ChessBitSet RANK_4 = new ChessBitSet();
-	private static final ChessBitSet RANK_5 = new ChessBitSet();
-	private static final ChessBitSet RANK_6 = new ChessBitSet();
-	private static final ChessBitSet RANK_7 = new ChessBitSet();
-	private static final ChessBitSet RANK_8 = new ChessBitSet();
-
-	private static Map<Integer, ChessBitSet> ALL_RANKS = new HashMap<>();
-
-	private static final ChessBitSet RIGHT_DIAGONAL_1 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_2 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_3 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_4 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_5 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_6 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_7 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_8 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_9 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_10 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_11 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_12 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_13 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_14 = new ChessBitSet();
-	private static final ChessBitSet RIGHT_DIAGONAL_15 = new ChessBitSet();
-
-	static Map<Integer, ChessBitSet> ALL_RIGHT_DIAGONALS = new HashMap<>();
+public class BitBoard {
 
 	static final ChessBitSet LEFT_DIAGONAL_1 = new ChessBitSet();
 	static final ChessBitSet LEFT_DIAGONAL_2 = new ChessBitSet();
@@ -82,19 +19,62 @@ public class  BitBoard {
 	static final ChessBitSet LEFT_DIAGONAL_13 = new ChessBitSet();
 	static final ChessBitSet LEFT_DIAGONAL_14 = new ChessBitSet();
 	static final ChessBitSet LEFT_DIAGONAL_15 = new ChessBitSet();
-
-	private static Map<Integer, ChessBitSet> ALL_LEFT_DIAGONALS = new HashMap<>();
-
+	private static final ChessBitSet FILE_A = new ChessBitSet();
+	private static final ChessBitSet FILE_B = new ChessBitSet();
+	private static final ChessBitSet FILE_C = new ChessBitSet();
+	private static final ChessBitSet FILE_D = new ChessBitSet();
+	private static final ChessBitSet FILE_E = new ChessBitSet();
+	private static final ChessBitSet FILE_F = new ChessBitSet();
+	private static final ChessBitSet FILE_G = new ChessBitSet();
+	private static final ChessBitSet FILE_H = new ChessBitSet();
+	private static final ChessBitSet RANK_1 = new ChessBitSet();
+	private static final ChessBitSet RANK_2 = new ChessBitSet();
+	private static final ChessBitSet RANK_3 = new ChessBitSet();
+	private static final ChessBitSet RANK_4 = new ChessBitSet();
+	private static final ChessBitSet RANK_5 = new ChessBitSet();
+	private static final ChessBitSet RANK_6 = new ChessBitSet();
+	private static final ChessBitSet RANK_7 = new ChessBitSet();
+	private static final ChessBitSet RANK_8 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_1 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_2 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_3 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_4 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_5 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_6 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_7 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_8 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_9 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_10 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_11 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_12 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_13 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_14 = new ChessBitSet();
+	private static final ChessBitSet RIGHT_DIAGONAL_15 = new ChessBitSet();
 	private static final ChessBitSet EMPTY_SET = new ChessBitSet();
 	private static final ChessBitSet FULL_SET = new ChessBitSet();
-
-	private static final String[] algebreicNotation = { "a8", "b8", "c8", "d8",
-	        "e8", "f8", "g8", "h8", "a7", "b7", "c7", "d7", "e7", "f7", "g7",
-	        "h7", "a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6", "a5", "b5",
-	        "c5", "d5", "e5", "f5", "g5", "h5", "a4", "b4", "c4", "d4", "e4",
-	        "f4", "g4", "h4", "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3",
-	        "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "a1", "b1", "c1",
-	        "d1", "e1", "f1", "g1", "h1" };
+	private static final String[] algebreicNotation = {"a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8", "a7", "b7", "c7"
+			, "d7", "e7", "f7", "g7", "h7", "a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6", "a5", "b5", "c5", "d5",
+			"e5", "f5", "g5", "h5", "a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4", "a3", "b3", "c3", "d3", "e3", "f3"
+			, "g3", "h3", "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "a1", "b1", "c1", "d1", "e1", "f1", "g1",
+			"h1"};
+	static Map<Integer, ChessBitSet> ALL_RIGHT_DIAGONALS = new HashMap<>();
+	private static ChessBitSet whiteKnights;
+	private static ChessBitSet whiteBishops;
+	private static ChessBitSet whiteRooks;
+	private static ChessBitSet whiteQueens;
+	private static ChessBitSet whiteKing;
+	private static ChessBitSet whitePawns;
+	private static ChessBitSet blackKnights;
+	private static ChessBitSet blackBishops;
+	private static ChessBitSet blackRooks;
+	private static ChessBitSet blackQueens;
+	private static ChessBitSet blackKing;
+	private static ChessBitSet blackPawns;
+	private static ChessBitSet whiteLegalLocations;
+	private static ChessBitSet blackLegalLocations;
+	private static Map<Integer, ChessBitSet> ALL_FILES = new HashMap<>();
+	private static Map<Integer, ChessBitSet> ALL_RANKS = new HashMap<>();
+	private static Map<Integer, ChessBitSet> ALL_LEFT_DIAGONALS = new HashMap<>();
 
 	static {
 		initializeColumns();
@@ -104,6 +84,8 @@ public class  BitBoard {
 		FULL_SET.set(0, 63);
 		EMPTY_SET.clear();
 	}
+
+	private final List<Move> boardLegalMoves;
 
 	public BitBoard() {
 
@@ -508,6 +490,12 @@ public class  BitBoard {
 		ALL_FILES = Collections.unmodifiableMap(ALL_FILES);
 	}
 
+	public static String getPositionAtCoordinate(final int c) {
+
+		return algebreicNotation[c];
+
+	}
+
 	public void generateStandardLegalMoves() {
 
 		boardLegalMoves.clear();
@@ -526,43 +514,43 @@ public class  BitBoard {
 
 		final ChessBitSet allKnights = Piece.allKnights();
 
-		for (int currentKnightLocation = allKnights.nextSetBit(0); currentKnightLocation >= 0; currentKnightLocation = allKnights
-		        .nextSetBit(currentKnightLocation + 1)) {
+		for (int currentKnightLocation = allKnights.nextSetBit(0); currentKnightLocation >= 0; currentKnightLocation =
+				allKnights.nextSetBit(currentKnightLocation + 1)) {
 			tiles[currentKnightLocation] = 'N';
 		}
 
 		final ChessBitSet allBishops = Piece.allBishops();
 
-		for (int currentBishopLocation = allBishops.nextSetBit(0); currentBishopLocation >= 0; currentBishopLocation = allBishops
-		        .nextSetBit(currentBishopLocation + 1)) {
+		for (int currentBishopLocation = allBishops.nextSetBit(0); currentBishopLocation >= 0; currentBishopLocation =
+				allBishops.nextSetBit(currentBishopLocation + 1)) {
 			tiles[currentBishopLocation] = 'B';
 		}
 
 		final ChessBitSet allRooks = Piece.allRooks();
 
-		for (int currentRookLocation = allRooks.nextSetBit(0); currentRookLocation >= 0; currentRookLocation = allRooks
-		        .nextSetBit(currentRookLocation + 1)) {
+		for (int currentRookLocation = allRooks.nextSetBit(0); currentRookLocation >= 0; currentRookLocation =
+				allRooks.nextSetBit(currentRookLocation + 1)) {
 			tiles[currentRookLocation] = 'R';
 		}
 
 		final ChessBitSet allPawns = Piece.allPawns();
 
-		for (int currentPawnLocation = allPawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation = allPawns
-		        .nextSetBit(currentPawnLocation + 1)) {
+		for (int currentPawnLocation = allPawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation =
+				allPawns.nextSetBit(currentPawnLocation + 1)) {
 			tiles[currentPawnLocation] = 'P';
 		}
 
 		final ChessBitSet allQueens = Piece.allQueens();
 
-		for (int currentQueenLocation = allQueens.nextSetBit(0); currentQueenLocation >= 0; currentQueenLocation = allQueens
-		        .nextSetBit(currentQueenLocation + 1)) {
+		for (int currentQueenLocation = allQueens.nextSetBit(0); currentQueenLocation >= 0; currentQueenLocation =
+				allQueens.nextSetBit(currentQueenLocation + 1)) {
 			tiles[currentQueenLocation] = 'Q';
 		}
 
 		final ChessBitSet allKings = Piece.allKings();
 
-		for (int currentKingLocation = allKings.nextSetBit(0); currentKingLocation >= 0; currentKingLocation = allKings
-		        .nextSetBit(currentKingLocation + 1)) {
+		for (int currentKingLocation = allKings.nextSetBit(0); currentKingLocation >= 0; currentKingLocation =
+				allKings.nextSetBit(currentKingLocation + 1)) {
 			tiles[currentKingLocation] = 'K';
 		}
 
@@ -632,8 +620,7 @@ public class  BitBoard {
 			public void setBits(final int moveLocation) {
 				whiteLegalLocations.set(moveLocation);
 			}
-		},
-		WHITE_ROOKS {
+		}, WHITE_ROOKS {
 			@Override
 			public List<Move> calculateLegalMoves() {
 				return calculateRookLegals(whiteRooks);
@@ -653,8 +640,7 @@ public class  BitBoard {
 			public void setBits(final int moveLocation) {
 				whiteLegalLocations.set(moveLocation);
 			}
-		},
-		WHITE_PAWNS {
+		}, WHITE_PAWNS {
 			@Override
 			public List<Move> calculateLegalMoves() {
 
@@ -674,21 +660,18 @@ public class  BitBoard {
 				pawnAttacksRight.shift(-7);
 				pawnAttacksRight.and(enemyPieces);
 
-				for (int currentPawnLocation = whitePawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation = whitePawns
-				        .nextSetBit(currentPawnLocation + 1)) {
+				for (int currentPawnLocation = whitePawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation = whitePawns.nextSetBit(currentPawnLocation + 1)) {
 
 					int candidateLocation = currentPawnLocation - 8;
 
 					if (pawnAdvances.get(candidateLocation)) {
-						legalMoves.add(new Move(currentPawnLocation,
-						        candidateLocation, this));
+						legalMoves.add(new Move(currentPawnLocation, candidateLocation, this));
 					}
 
 					candidateLocation = currentPawnLocation - 16;
 
 					if (pawnJumps.get(candidateLocation)) {
-						legalMoves.add(new Move(currentPawnLocation,
-						        candidateLocation, this));
+						legalMoves.add(new Move(currentPawnLocation, candidateLocation, this));
 					}
 
 				}
@@ -710,8 +693,7 @@ public class  BitBoard {
 			public void setBits(final int moveLocation) {
 				whiteLegalLocations.set(moveLocation);
 			}
-		},
-		BLACK_KNIGHTS() {
+		}, BLACK_KNIGHTS() {
 			@Override
 			public List<Move> calculateLegalMoves() {
 				return calculateKnightLegals(blackKnights);
@@ -732,8 +714,7 @@ public class  BitBoard {
 				blackLegalLocations.set(moveLocation);
 			}
 
-		},
-		BLACK_BISHOPS {
+		}, BLACK_BISHOPS {
 			@Override
 			public List<Move> calculateLegalMoves() {
 				return calculateBishopLegals(blackBishops);
@@ -753,8 +734,7 @@ public class  BitBoard {
 			public void setBits(final int moveLocation) {
 				blackLegalLocations.set(moveLocation);
 			}
-		},
-		BLACK_ROOKS {
+		}, BLACK_ROOKS {
 			@Override
 			public List<Move> calculateLegalMoves() {
 				return calculateRookLegals(blackRooks);
@@ -774,8 +754,7 @@ public class  BitBoard {
 			public void setBits(final int moveLocation) {
 				blackLegalLocations.set(moveLocation);
 			}
-		},
-		BLACK_PAWNS {
+		}, BLACK_PAWNS {
 			@Override
 			public List<Move> calculateLegalMoves() {
 
@@ -795,21 +774,18 @@ public class  BitBoard {
 				pawnAttacksRight.shift(7);
 				pawnAttacksRight.and(enemyPieces);
 
-				for (int currentPawnLocation = blackPawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation = blackPawns
-				        .nextSetBit(currentPawnLocation + 1)) {
+				for (int currentPawnLocation = blackPawns.nextSetBit(0); currentPawnLocation >= 0; currentPawnLocation = blackPawns.nextSetBit(currentPawnLocation + 1)) {
 
 					int candidateLocation = currentPawnLocation + 8;
 
 					if (pawnAdvances.get(candidateLocation)) {
-						legalMoves.add(new Move(currentPawnLocation,
-						        candidateLocation, this));
+						legalMoves.add(new Move(currentPawnLocation, candidateLocation, this));
 					}
 
 					candidateLocation = currentPawnLocation + 16;
 
 					if (pawnJumps.get(candidateLocation)) {
-						legalMoves.add(new Move(currentPawnLocation,
-						        candidateLocation, this));
+						legalMoves.add(new Move(currentPawnLocation, candidateLocation, this));
 					}
 
 				}
@@ -836,340 +812,8 @@ public class  BitBoard {
 			}
 		};
 
-		public abstract List<Move> calculateLegalMoves();
-
-		public abstract ChessBitSet alliedPieces();
-
-		public abstract ChessBitSet enemyPieces();
-
-		public abstract void setBits(int moveLocation);
-
-		public boolean isOccupied(final int position) {
-			return Piece.allPieces().get(position);
-		}
-
-		public List<Move> calculateKingLegals(final ChessBitSet kingBitSet) {
-
-			final ChessBitSet alliedUnits = alliedPieces();
-			final int kingPos = kingBitSet.nextSetBit(0);
-			int moveLocation = kingPos - 1;
-			final List<Move> legalMoves = new ArrayList<>();
-
-			if (alliedUnits.get(kingPos) && !FILE_A.get(kingPos)) {
-				if (isValidTile(moveLocation)) {
-					setBits(moveLocation);
-				}
-			}
-
-			moveLocation = kingPos + 1;
-
-			if (!alliedUnits.get(kingPos) && !FILE_H.get(kingPos)) {
-				if (isValidTile(moveLocation)) {
-					setBits(moveLocation);
-				}
-			}
-
-			moveLocation = kingPos + 8;
-
-			if (isValidTile(moveLocation) && !alliedUnits.get(kingPos)
-			        && (FULL_SET.get(moveLocation))) {
-				setBits(moveLocation);
-			}
-
-			moveLocation = kingPos - 8;
-
-			if (isValidTile(moveLocation) && !alliedUnits.get(kingPos)
-			        && (FULL_SET.get(moveLocation))) {
-				setBits(moveLocation);
-			}
-
-			return legalMoves;
-		}
-
 		private static boolean isValidTile(final int moveLocation) {
 			return moveLocation >= 0 && moveLocation < 64;
-		}
-
-		public List<Move> calculateQueenLegals(final ChessBitSet queenBitSet) {
-
-			final List<Move> legalMoves = new ArrayList<>();
-
-			legalMoves.addAll(calculateBishopLegals(queenBitSet));
-			legalMoves.addAll(calculateRookLegals(queenBitSet));
-
-			return legalMoves;
-		}
-
-		public List<Move> calculateRookLegals(final ChessBitSet rookBitSet) {
-
-			final ChessBitSet alliedUnits = alliedPieces();
-			final ChessBitSet enemyUnits = enemyPieces();
-			final List<Move> legalMoves = new ArrayList<>();
-
-			for (int currentRookLocation = rookBitSet.nextSetBit(0); currentRookLocation >= 0; currentRookLocation = rookBitSet
-			        .nextSetBit(currentRookLocation + 1)) {
-
-				final ChessBitSet vertical = ALL_FILES.get(currentRookLocation);
-				final ChessBitSet horizontal = ALL_RANKS
-				        .get(currentRookLocation);
-
-				// up
-				int candidateLocation = currentRookLocation - 8;
-				int endPos = vertical.nextSetBit(0);
-				while (candidateLocation >= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentRookLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation -= 8;
-				}
-
-				// down
-				candidateLocation = currentRookLocation + 8;
-				endPos = vertical.length();
-				while (endPos >= candidateLocation) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentRookLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation += 8;
-				}
-
-				// left
-				candidateLocation = currentRookLocation - 1;
-				endPos = horizontal.nextSetBit(0);
-				while (candidateLocation >= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentRookLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation--;
-				}
-
-				// right
-				candidateLocation = currentRookLocation + 1;
-				endPos = horizontal.length() - 1;
-				while (candidateLocation <= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentRookLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation++;
-				}
-
-			}
-
-			return legalMoves;
-
-		}
-
-		public List<Move> calculateBishopLegals(final ChessBitSet bishopBitSet) {
-
-			final ChessBitSet alliedUnits = alliedPieces();
-			final ChessBitSet enemyUnits = enemyPieces();
-			final List<Move> legalMoves = new ArrayList<>();
-
-			for (int currentBishopLocation = bishopBitSet.nextSetBit(0); currentBishopLocation >= 0; currentBishopLocation = bishopBitSet
-			        .nextSetBit(currentBishopLocation + 1)) {
-
-				final ChessBitSet rightDiag = ALL_RIGHT_DIAGONALS
-				        .get(currentBishopLocation);
-				final ChessBitSet leftDiag = ALL_LEFT_DIAGONALS
-				        .get(currentBishopLocation);
-
-				// up and to the right
-				int candidateLocation = currentBishopLocation - 7;
-				int endPos = rightDiag.nextSetBit(0);
-				while (candidateLocation >= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentBishopLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation -= 7;
-				}
-
-				// down and to the left
-				candidateLocation = currentBishopLocation + 7;
-				endPos = rightDiag.length() - 1;
-				while (endPos >= candidateLocation) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentBishopLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation += 7;
-				}
-
-				// up and to the left
-				candidateLocation = currentBishopLocation - 9;
-				endPos = leftDiag.nextSetBit(0);
-				while (candidateLocation >= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentBishopLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation -= 9;
-				}
-
-				// down and to the right
-				candidateLocation = currentBishopLocation + 9;
-				endPos = leftDiag.length() - 1;
-				while (candidateLocation <= endPos) {
-					if (alliedUnits.get(candidateLocation)) {
-						break;
-					}
-					setBits(candidateLocation);
-					legalMoves.add(new Move(currentBishopLocation,
-					        candidateLocation, this));
-					if (enemyUnits.get(candidateLocation)) {
-						break;
-					}
-					candidateLocation += 9;
-				}
-
-			}
-
-			return legalMoves;
-		}
-
-		public List<Move> calculateKnightLegals(final ChessBitSet knightBitSet) {
-
-			final ChessBitSet alliedUnits = alliedPieces();
-			final ChessBitSet enemyUnits = enemyPieces();
-			final List<Move> legalMoves = new ArrayList<>();
-
-			for (int currentKnightLocation = knightBitSet.nextSetBit(0); currentKnightLocation >= 0; currentKnightLocation = knightBitSet
-			        .nextSetBit(currentKnightLocation + 1)) {
-				if (!(FILE_G.get(currentKnightLocation) || FILE_H
-				        .get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation - 6;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_A.get(currentKnightLocation) || FILE_B
-				        .get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation - 10;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_H.get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation - 15;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_A.get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation - 17;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_A.get(currentKnightLocation) || FILE_B
-				        .get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation + 6;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_G.get(currentKnightLocation) || FILE_H
-				        .get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation + 10;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_A.get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation + 15;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-				if (!(FILE_H.get(currentKnightLocation))) {
-					final int candidateLocation = currentKnightLocation + 17;
-					if (isValidTile(candidateLocation)) {
-						if (!alliedUnits.get(candidateLocation)
-						        || enemyUnits.get(candidateLocation)) {
-							setBits(candidateLocation);
-							legalMoves.add(new Move(currentKnightLocation,
-							        candidateLocation, this));
-						}
-					}
-				}
-			}
-
-			return legalMoves;
-
 		}
 
 		public static ChessBitSet allPawns() {
@@ -1249,11 +893,302 @@ public class  BitBoard {
 			return allBlackPieces;
 		}
 
-	}
+		public abstract List<Move> calculateLegalMoves();
 
-	public static String getPositionAtCoordinate(final int c) {
+		public abstract ChessBitSet alliedPieces();
 
-		return algebreicNotation[c];
+		public abstract ChessBitSet enemyPieces();
+
+		public abstract void setBits(int moveLocation);
+
+		public boolean isOccupied(final int position) {
+			return Piece.allPieces().get(position);
+		}
+
+		public List<Move> calculateKingLegals(final ChessBitSet kingBitSet) {
+
+			final ChessBitSet alliedUnits = alliedPieces();
+			final int kingPos = kingBitSet.nextSetBit(0);
+			int moveLocation = kingPos - 1;
+			final List<Move> legalMoves = new ArrayList<>();
+
+			if (alliedUnits.get(kingPos) && !FILE_A.get(kingPos)) {
+				if (isValidTile(moveLocation)) {
+					setBits(moveLocation);
+				}
+			}
+
+			moveLocation = kingPos + 1;
+
+			if (!alliedUnits.get(kingPos) && !FILE_H.get(kingPos)) {
+				if (isValidTile(moveLocation)) {
+					setBits(moveLocation);
+				}
+			}
+
+			moveLocation = kingPos + 8;
+
+			if (isValidTile(moveLocation) && !alliedUnits.get(kingPos) && (FULL_SET.get(moveLocation))) {
+				setBits(moveLocation);
+			}
+
+			moveLocation = kingPos - 8;
+
+			if (isValidTile(moveLocation) && !alliedUnits.get(kingPos) && (FULL_SET.get(moveLocation))) {
+				setBits(moveLocation);
+			}
+
+			return legalMoves;
+		}
+
+		public List<Move> calculateQueenLegals(final ChessBitSet queenBitSet) {
+
+			final List<Move> legalMoves = new ArrayList<>();
+
+			legalMoves.addAll(calculateBishopLegals(queenBitSet));
+			legalMoves.addAll(calculateRookLegals(queenBitSet));
+
+			return legalMoves;
+		}
+
+		public List<Move> calculateRookLegals(final ChessBitSet rookBitSet) {
+
+			final ChessBitSet alliedUnits = alliedPieces();
+			final ChessBitSet enemyUnits = enemyPieces();
+			final List<Move> legalMoves = new ArrayList<>();
+
+			for (int currentRookLocation = rookBitSet.nextSetBit(0); currentRookLocation >= 0; currentRookLocation =
+					rookBitSet.nextSetBit(currentRookLocation + 1)) {
+
+				final ChessBitSet vertical = ALL_FILES.get(currentRookLocation);
+				final ChessBitSet horizontal = ALL_RANKS.get(currentRookLocation);
+
+				// up
+				int candidateLocation = currentRookLocation - 8;
+				int endPos = vertical.nextSetBit(0);
+				while (candidateLocation >= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentRookLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation -= 8;
+				}
+
+				// down
+				candidateLocation = currentRookLocation + 8;
+				endPos = vertical.length();
+				while (endPos >= candidateLocation) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentRookLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation += 8;
+				}
+
+				// left
+				candidateLocation = currentRookLocation - 1;
+				endPos = horizontal.nextSetBit(0);
+				while (candidateLocation >= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentRookLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation--;
+				}
+
+				// right
+				candidateLocation = currentRookLocation + 1;
+				endPos = horizontal.length() - 1;
+				while (candidateLocation <= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentRookLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation++;
+				}
+
+			}
+
+			return legalMoves;
+
+		}
+
+		public List<Move> calculateBishopLegals(final ChessBitSet bishopBitSet) {
+
+			final ChessBitSet alliedUnits = alliedPieces();
+			final ChessBitSet enemyUnits = enemyPieces();
+			final List<Move> legalMoves = new ArrayList<>();
+
+			for (int currentBishopLocation = bishopBitSet.nextSetBit(0); currentBishopLocation >= 0; currentBishopLocation = bishopBitSet.nextSetBit(currentBishopLocation + 1)) {
+
+				final ChessBitSet rightDiag = ALL_RIGHT_DIAGONALS.get(currentBishopLocation);
+				final ChessBitSet leftDiag = ALL_LEFT_DIAGONALS.get(currentBishopLocation);
+
+				// up and to the right
+				int candidateLocation = currentBishopLocation - 7;
+				int endPos = rightDiag.nextSetBit(0);
+				while (candidateLocation >= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentBishopLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation -= 7;
+				}
+
+				// down and to the left
+				candidateLocation = currentBishopLocation + 7;
+				endPos = rightDiag.length() - 1;
+				while (endPos >= candidateLocation) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentBishopLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation += 7;
+				}
+
+				// up and to the left
+				candidateLocation = currentBishopLocation - 9;
+				endPos = leftDiag.nextSetBit(0);
+				while (candidateLocation >= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentBishopLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation -= 9;
+				}
+
+				// down and to the right
+				candidateLocation = currentBishopLocation + 9;
+				endPos = leftDiag.length() - 1;
+				while (candidateLocation <= endPos) {
+					if (alliedUnits.get(candidateLocation)) {
+						break;
+					}
+					setBits(candidateLocation);
+					legalMoves.add(new Move(currentBishopLocation, candidateLocation, this));
+					if (enemyUnits.get(candidateLocation)) {
+						break;
+					}
+					candidateLocation += 9;
+				}
+
+			}
+
+			return legalMoves;
+		}
+
+		public List<Move> calculateKnightLegals(final ChessBitSet knightBitSet) {
+
+			final ChessBitSet alliedUnits = alliedPieces();
+			final ChessBitSet enemyUnits = enemyPieces();
+			final List<Move> legalMoves = new ArrayList<>();
+
+			for (int currentKnightLocation = knightBitSet.nextSetBit(0); currentKnightLocation >= 0; currentKnightLocation = knightBitSet.nextSetBit(currentKnightLocation + 1)) {
+				if (!(FILE_G.get(currentKnightLocation) || FILE_H.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation - 6;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_A.get(currentKnightLocation) || FILE_B.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation - 10;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_H.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation - 15;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_A.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation - 17;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_A.get(currentKnightLocation) || FILE_B.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation + 6;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_G.get(currentKnightLocation) || FILE_H.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation + 10;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_A.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation + 15;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+				if (!(FILE_H.get(currentKnightLocation))) {
+					final int candidateLocation = currentKnightLocation + 17;
+					if (isValidTile(candidateLocation)) {
+						if (!alliedUnits.get(candidateLocation) || enemyUnits.get(candidateLocation)) {
+							setBits(candidateLocation);
+							legalMoves.add(new Move(currentKnightLocation, candidateLocation, this));
+						}
+					}
+				}
+			}
+
+			return legalMoves;
+
+		}
 
 	}
 
